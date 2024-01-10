@@ -84,4 +84,4 @@ echo '    linux /live/vmlinuz boot=live components --' >> pardus/boot/grub/grub.
 echo '    initrd /live/initrd.img' >> pardus/boot/grub/grub.cfg
 echo '}' >> pardus/boot/grub/grub.cfg
 
-grub-mkrescue pardus -o pardus-23-kde-backports.iso
+grub-mkrescue pardus -o pardus-kde-backports.iso
