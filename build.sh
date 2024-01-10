@@ -1,5 +1,8 @@
 #!/usr/bin/sh
 set -ex
+
+apt install debootstrap xorriso squashfs-tools mtools grub-pc-bin grub-efi-amd64 -y
+
 mkdir chroot || true
 export DEBIAN_FRONTEND=noninteractive
 ln -s sid /usr/share/debootstrap/scripts/yirmiuc-deb || true
@@ -30,17 +33,23 @@ chmod +x chroot/usr/sbin/policy-rc.d
 chroot chroot apt-get install -t yirmiuc-backports linux-image-amd64 -y
 
 #Firmwares
-chroot chroot apt-get install firmware-linux firmware-linux-free firmware-linux-nonfree firmware-misc-nonfree firmware-amd-graphics firmware-realtek bluez-firmware -y
+chroot chroot apt-get install -y firmware-amd-graphics firmware-atheros \
+    firmware-b43-installer firmware-b43legacy-installer \
+    firmware-bnx2 firmware-bnx2x firmware-brcm80211 firmware-linux-free \
+    firmware-cavium firmware-intel-sound \
+    firmware-iwlwifi  firmware-libertas firmware-linux \
+    firmware-linux-nonfree firmware-misc-nonfree firmware-myricom \
+    firmware-netxen firmware-qlogic firmware-realtek firmware-samsung \
+    firmware-siano firmware-ti-connectivity firmware-zd1211
     
 #Init and Window System
-chroot chroot apt-get install xorg xinit lightdm -y
+chroot chroot apt-get install xorg xinit sddm -y
 
 #Desktop apps
-chroot chroot apt-get install gedit eog gnome-screenshot gnome-clocks gnome-terminal gnome-system-monitor gnome-calculator gnome-weather gnome-calendar network-manager-gnome -y
-chroot chroot apt-get install cinnamon synaptic p7zip-full ffmpeg gvfs-backends wget xdg-user-dirs file-roller papirus-icon-theme orchis-gtk-theme -y
+chroot chroot apt-get install kde-plasma-desktop p7zip-full ffmpeg gvfs-backends wget xdg-user-dirs -y
 
 #Pardus apps
-chroot chroot apt-get install pardus-lightdm-greeter pardus-installer pardus-software pardus-package-installer pardus-night-light pardus-about pardus-update pardus-locales pardus-ayyildiz-grub-theme -y
+chroot chroot apt-get install pardus-installer pardus-package-installer pardus-locales pardus-ayyildiz-grub-theme -y
 
 #Grub update
 chroot chroot update-grub
@@ -72,9 +81,9 @@ cp -pf chroot/boot/vmlinuz-* pardus/live/vmlinuz
 
 mkdir -p pardus/boot/grub/
 echo 'terminal_output console' > pardus/boot/grub/grub.cfg
-echo 'menuentry "Start Pardus GNU/Linux Cinnamon (Unofficial)" --class pardus {' >> pardus/boot/grub/grub.cfg
+echo 'menuentry "Start Pardus GNU/Linux (Unofficial)" --class pardus {' >> pardus/boot/grub/grub.cfg
 echo '    linux /live/vmlinuz boot=live components --' >> pardus/boot/grub/grub.cfg
 echo '    initrd /live/initrd.img' >> pardus/boot/grub/grub.cfg
 echo '}' >> pardus/boot/grub/grub.cfg
 
-grub-mkrescue pardus -o pardus-cinnamon-backports.iso
+grub-mkrescue pardus -o pardus-23-kde-backports.iso
