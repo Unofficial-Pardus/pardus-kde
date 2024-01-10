@@ -1,8 +1,6 @@
 #!/usr/bin/sh
 set -ex
 
-apt install debootstrap xorriso squashfs-tools mtools grub-pc-bin grub-efi-amd64 -y
-
 mkdir chroot || true
 export DEBIAN_FRONTEND=noninteractive
 ln -s sid /usr/share/debootstrap/scripts/yirmiuc-deb || true
