@@ -1,2 +1,2 @@
-Pardus 23 Backports Cinnamon Unofficial
-07/01/2024
+Pardus 23 Backports KDE Unofficial
+10/01/2024
