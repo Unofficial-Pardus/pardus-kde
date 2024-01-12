@@ -44,7 +44,7 @@ chroot chroot apt-get install -y firmware-amd-graphics firmware-atheros \
 chroot chroot apt-get install xorg xinit sddm -y
 
 #Desktop apps
-chroot chroot apt-get install kde-plasma-desktop p7zip-full ffmpeg gvfs-backends wget xdg-user-dirs -y
+chroot chroot apt-get install kate konsole kfind kde-spectacle ark kcalc kwalletmanager kde-plasma-desktop p7zip-full ffmpeg gvfs-backends wget xdg-user-dirs -y
 
 #Pardus apps
 chroot chroot apt-get install pardus-installer pardus-package-installer pardus-locales pardus-ayyildiz-grub-theme -y
