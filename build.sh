@@ -47,11 +47,13 @@ chroot chroot apt-get install xorg xinit sddm -y
 chroot chroot apt-get install kate konsole kfind kde-spectacle ark kcalc kwalletmanager kde-plasma-desktop p7zip-full ffmpeg gvfs-backends wget xdg-user-dirs -y
 
 #Pardus apps
-chroot chroot apt-get install pardus-installer pardus-package-installer pardus-locales pardus-ayyildiz-grub-theme -y
+chroot chroot apt-get install pardus-installer pardus-software pardus-about pardus-package-installer pardus-locales pardus-ayyildiz-grub-theme -y
 
 #Grub update
-chroot chroot update-grub
+chroot chroot apt-get update -y
 chroot chroot apt-get upgrade -y
+chroot chroot update-grub
+
 
 #### Remove bloat files after dpkg invoke (optional)
 cat > chroot/etc/apt/apt.conf.d/02antibloat << EOF
