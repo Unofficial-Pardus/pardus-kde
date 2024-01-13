@@ -50,7 +50,6 @@ chroot chroot apt-get install kate konsole kfind kde-spectacle ark kcalc kwallet
 chroot chroot apt-get install pardus-installer pardus-software pardus-about pardus-package-installer pardus-locales pardus-ayyildiz-grub-theme -y
 
 #Grub update
-chroot chroot apt-get update -y
 chroot chroot apt-get upgrade -y
 chroot chroot update-grub
 
