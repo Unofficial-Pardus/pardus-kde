@@ -70,7 +70,7 @@ mkdir pardus || true
 while umount -lf -R chroot/* 2>/dev/null ; do
  : "Umount action"
 done
-mksquashfs chroot filesystem.squashfs -comp gzip -wildcards
+mksquashfs chroot filesystem.squashfs -comp xz -wildcards
 find chroot/var/log/ -type f | xargs rm -f
 mkdir -p pardus/live
 mv filesystem.squashfs pardus/live/filesystem.squashfs
