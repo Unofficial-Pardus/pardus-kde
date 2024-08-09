@@ -1,10 +1,12 @@
 #!/usr/bin/sh
-set -ex
+apt update
+apt install curl debootstrap xorriso squashfs-tools mtools grub-pc-bin grub-efi -y
 
+set -ex
 mkdir chroot || true
 export DEBIAN_FRONTEND=noninteractive
 ln -s sid /usr/share/debootstrap/scripts/yirmiuc-deb || true
-debootstrap  --no-check-gpg --arch=amd64 yirmiuc-deb chroot https://depo.pardus.org.tr/pardus
+debootstrap  --no-check-gpg --arch=amd64 yirmiuc-deb chroot http://depo.pardus.org.tr/pardus
 for i in dev dev/pts proc sys; do mount -o bind /$i chroot/$i; done
 
 cat > chroot/etc/apt/sources.list << EOF
