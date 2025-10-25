@@ -16,7 +16,7 @@ jobs:
         run: |
           sudo bash build.sh
           sudo mkdir -p /output
-          sudo mv *.iso /output/pardus-23-kde-backports.iso
+          sudo mv *.iso /output/pardus-kde-backports.iso
 
 
       - uses: "marvinpinto/action-automatic-releases@latest"
