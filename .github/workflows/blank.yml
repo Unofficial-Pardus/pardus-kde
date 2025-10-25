@@ -24,6 +24,6 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "main"
           prerelease: false
-          title: "pardus 23 kde backports lite"
+          title: "pardus kde backports lite"
           files: |
             /output/*
